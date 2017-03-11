@@ -17,6 +17,7 @@ $(document).ready(function() {
 
     $('.btn-logout').click(function(e) {
         e.preventDefault();
+        console.log("logout");
         window.location = 'logout.php';
     });
 });

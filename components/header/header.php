@@ -8,19 +8,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- font awesome from BootstrapCDN -->
+        <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 
-        <script>
-          var AUTH0_CLIENT_ID = '<?php echo getenv("AUTH0_CLIENT_ID") ?>';
-          var AUTH0_DOMAIN = '<?php echo getenv("AUTH0_DOMAIN") ?>';
-          var AUTH0_CALLBACK_URL = '<?php echo getenv("AUTH0_CALLBACK_URL") ?>';
-        </script>
-
-
         <script src="public/app.js"> </script>
         <link href="public/app.css" rel="stylesheet">
-
     </head>
 
     <body class="home">
@@ -29,7 +22,6 @@
 
     // Require composer autoloader
     require __DIR__ . '/../../vendor/autoload.php';
-
     require __DIR__ . '/../../dotenv-loader.php';
 
     use Auth0\SDK\API\Authentication;
@@ -48,6 +40,14 @@
 
 
     $userInfo = $auth0Oauth->getUser();
-
     ?>
+
+    <?php 
+    require __DIR__ . '/../../db/User.php';
+    ?>
+    <script>
+        var AUTH0_CLIENT_ID = '<?php echo getenv('AUTH0_CLIENT_ID'); ?>';
+        var AUTH0_DOMAIN = '<?php echo getenv('AUTH0_DOMAIN'); ?>';
+        var AUTH0_CALLBACK_URL = '<?php echo getenv('AUTH0_CALLBACK_URL'); ?>';
+    </script>
     <?php include_once("nav.php");?>

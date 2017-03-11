@@ -14,6 +14,7 @@
     </ul>
    <?php if(!$userInfo): ?>
      <button class="btn btn-login btn-outline-success my-2 my-sm-0">Sign In</button>
+     
    <?php else: ?>
      <button class="btn btn-logout my-2 my-sm-0">Log Out</button>
    <?php endif ?>
