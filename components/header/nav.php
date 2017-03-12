@@ -9,8 +9,9 @@
       <li class="nav-item active">
         <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
       </li>
-
-
+      <li class="nav-item active">      
+        <a class="nav-link" href="books/index.php">Books</a>
+      </li>
     </ul>
    <?php if(!$userInfo): ?>
      <button class="btn btn-login btn-outline-success my-2 my-sm-0">Sign In</button>
