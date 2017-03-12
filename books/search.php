@@ -2,8 +2,8 @@
   <?php include_once("../components/header/header.php");?>
   <div class="container">
      <h1>Search Books</h1>
-     <form>
-         <input type="text" name="searchQ" placeholder="Search Books">
+     <form method="GET" action="results.php">
+         <input type="text" name="q" placeholder="Book Title">
          <input type="submit" value="Search">
      </form>
   </div>
