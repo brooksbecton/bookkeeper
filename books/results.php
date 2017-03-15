@@ -23,15 +23,18 @@ class BookResults{
             $volume = $r->volumeInfo;
             echo "<li>";
             echo "<strong>" . $volume->title . "</strong>";
-            echo " by ";
-            $i = 0;
-            $len = count($volume->authors);
-            foreach($volume->authors as $author){
-                if(++$i != $len){
-                    echo $author . ", ";
-                }
-                else{
-                    echo $author;
+            //Lists volume authors if availible
+            if(array_key_exists("authors", $volume)){
+                echo " by ";
+                $i = 0;
+                $len = count($volume->authors);
+                foreach($volume->authors as $author){
+                    if(++$i != $len){
+                        echo $author . ", ";
+                    }
+                    else{
+                        echo $author;
+                    }
                 }
             }
             echo "</li>";
