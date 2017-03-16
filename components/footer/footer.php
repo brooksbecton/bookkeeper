@@ -29,7 +29,21 @@
 </script>
 <style>
 footer {
-    bottom: 0px;
+    background-color: gainsboro; 
+    bottom: 0;
+    height: 40px;
     position: absolute;
+    width: 100%;
+}
+
+.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+}
+html {
+  min-height: 100vh;
+  position: relative;
 }
 </style>
