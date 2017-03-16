@@ -4,7 +4,6 @@ class GoogleBooks{
     public $books;
     public $error_msg = "";
 
-    protected $qUrl = "https://www.googleapis.com/books/v1/volumes?q=";
     protected $apiKey;
 
     function __construct(){
@@ -12,7 +11,28 @@ class GoogleBooks{
     }
 
     function get_book($id){
-        
+        $qUrl = "https://www.googleapis.com/books/v1/volumes/";
+
+        $results = file_get_contents($qUrl . $id . "?key=" . $this->apiKey);
+
+        return json_decode($results);
+
+    }
+
+    function print_authors($volume){
+         if(array_key_exists("authors", $volume)){
+                echo " by ";
+                $i = 0;
+                $len = count($volume->authors);
+                foreach($volume->authors as $author){
+                    if(++$i != $len){
+                        echo $author . ", ";
+                    }
+                    else{
+                        echo $author;
+                    }
+                }
+            }
     }
 
     function print_books(){
@@ -26,19 +46,7 @@ class GoogleBooks{
             echo "<li>";
             echo "<a href='details.php?id=" . $bookId . "'>" . $volume->title . "</a>";
             //Lists volume authors if availible
-            if(array_key_exists("authors", $volume)){
-                echo " by ";
-                $i = 0;
-                $len = count($volume->authors);
-                foreach($volume->authors as $author){
-                    if(++$i != $len){
-                        echo $author . ", ";
-                    }
-                    else{
-                        echo $author;
-                    }
-                }
-            }
+            $this->print_authors($volume);
             echo "</li>";
         }
         echo "</ul>";
@@ -57,8 +65,10 @@ class GoogleBooks{
     }
 
     function search_book_by_title($title){
+        $qUrl = "https://www.googleapis.com/books/v1/volumes?q=";
+
         $title = $this->process_title($title);
-        $results = file_get_contents($this->qUrl . $title . "&key=" . $this->apiKey);
+        $results = file_get_contents($qUrl . $title . "&key=" . $this->apiKey);
         $results = json_decode($results);
         $this->books = $results;
     }
