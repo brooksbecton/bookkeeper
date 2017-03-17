@@ -1,8 +1,6 @@
 <html>
 <?php 
 include_once("../components/header/header.php");
-
-
 include_once("assets/GoogleBooks.php");
 
 $gb = new GoogleBooks();
@@ -26,7 +24,7 @@ $gb = new GoogleBooks();
                     <?php } ?>
 
                     <div>
-                        <a href="revcasdfasdiew.php">
+                        <a href="review.php?id=<?php echo $bookId ?>">
                             <button class="btn btn-primary justify-content-center center" type="button">Review</button>
                         </a>
                     </div>
@@ -68,8 +66,3 @@ $gb = new GoogleBooks();
 <?php include_once("../components/footer/footer.php");?>
 
 </html>
-<?php
-echo "<pre>";
-var_dump($volumeData);
-echo "</pre>";
-?>
